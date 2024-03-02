@@ -1,0 +1,37 @@
+{
+  "name": "fullstack-javascript-project-44",
+  "version": "1.0.0",
+  "description": "brain-games",
+  "main": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "brain-games": "bin/intro",
+    "brain-gcd": "bin/gcd",
+    "brain-calc": "bin/calc",
+    "brain-even": "bin/even",
+    "brain-prime": "bin/prime",
+    "brain-progression": "bin/progression"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drgoodness/fullstack-javascript-project-44.git"
+  },
+  "author": "drgoodness",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drgoodness/fullstack-javascript-project-44/issues"
+  },
+  "homepage": "https://github.com/drgoodness/fullstack-javascript-project-44#readme",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
