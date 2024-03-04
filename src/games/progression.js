@@ -1,4 +1,4 @@
-import { Qna, play, getRandom } from '../index.js';
+import { play, getRandom } from '../index.js';
 
 const getQuestion = (progressionStr) => `Question: ${progressionStr}`;
 
@@ -6,7 +6,7 @@ const buildProgression = (size, filler, increment) => Array(size)
   .fill(filler)
   .map((el, index) => index + increment);
 
-const hideElementInProgression = (progression, index) => {
+const getProgressionWithHiddenElement = (progression, index) => {
   const maskedProgression = [];
   for (let i = 0; i < progression.length; i += 1) {
     if (i === index) {
@@ -18,35 +18,25 @@ const hideElementInProgression = (progression, index) => {
   return maskedProgression;
 };
 
-class Progression {
-  constructor(size) {
-    const index = getRandom(0, size - 1);
-    const filler = getRandom(0, 9);
-    const increment = getRandom(2, 9);
-    this.original = buildProgression(size, filler, increment);
-    this.masked = hideElementInProgression(this.original, index);
-    this.hidenElement = this.original[index];
-  }
-
-  getMaskedProgressionAsString() {
-    const result = this.masked.reduce((acc, el) => {
-      let res = acc;
-      res += `${el} `;
-      return res;
-    }, '');
-    return result.trim();
-  }
-
-  getHiddenElement() {
-    return this.hidenElement;
-  }
-}
+const getProgressionAsString = (progression) => {
+  const result = progression.reduce((acc, el) => {
+    let res = acc;
+    res += `${el} `;
+    return res;
+  }, '');
+  return result.trim();
+};
 
 const getQuestionAndAnswer = () => {
-  const qna = new Qna();
-  const progression = new Progression(10);
-  qna.question = getQuestion(progression.getMaskedProgressionAsString());
-  qna.answer = progression.getHiddenElement();
+  const qna = { question: '', answer: 0 };
+  const size = 10;
+  const indexOfHiddenElement = getRandom(0, size - 1);
+  const filler = getRandom(0, 9);
+  const increment = getRandom(2, 9);
+  const progression = buildProgression(size, filler, increment);
+  const maskedProgression = getProgressionWithHiddenElement(progression, indexOfHiddenElement);
+  qna.question = getQuestion(getProgressionAsString(maskedProgression));
+  qna.answer = progression[indexOfHiddenElement];
   return qna;
 };
 

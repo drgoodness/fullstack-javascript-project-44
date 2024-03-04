@@ -1,13 +1,6 @@
 import readline from 'readline-sync';
 import login from './cli.js';
 
-class Qna {
-  constructor() {
-    this.question = '';
-    this.answer = 0;
-  }
-}
-
 const play = (initQuestion, qanFunc) => {
   const userName = login();
   console.log(initQuestion);
@@ -30,7 +23,6 @@ const play = (initQuestion, qanFunc) => {
 const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export {
-  Qna,
   play,
   getRandom,
 };

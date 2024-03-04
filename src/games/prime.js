@@ -1,4 +1,4 @@
-import { Qna, play, getRandom } from '../index.js';
+import { play, getRandom } from '../index.js';
 
 const getQuestion = (num) => `Question: ${num}`;
 
@@ -16,7 +16,7 @@ const isPrime = (num) => {
 
 const getQuestionAndAnswer = () => {
   const num = getRandom(0, 99);
-  const qna = new Qna();
+  const qna = { question: '', answer: 0 };
   qna.question = getQuestion(num);
   qna.answer = isPrime(num);
   return qna;

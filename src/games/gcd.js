@@ -1,4 +1,4 @@
-import { Qna, play, getRandom } from '../index.js';
+import { play, getRandom } from '../index.js';
 
 const getQuestion = (a, b) => `Question: ${a} ${b}`;
 
@@ -12,7 +12,7 @@ const gcd = (a, b) => {
 const getQuestionAndAnswer = () => {
   const a = getRandom(0, 99);
   const b = getRandom(0, 99);
-  const qna = new Qna();
+  const qna = { question: '', answer: 0 };
   qna.question = getQuestion(a, b);
   qna.answer = gcd(a, b);
   return qna;
