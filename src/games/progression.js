@@ -1,4 +1,4 @@
-import { Qna, play, getRandom } from '../main.js';
+import { Qna, play, getRandom } from '../index.js';
 
 const getQuestion = (progressionStr) => `Question: ${progressionStr}`;
 
@@ -44,7 +44,7 @@ class Progression {
 
 const getQuestionAndAnswer = () => {
   const qna = new Qna();
-  const progression = new Progression(8);
+  const progression = new Progression(10);
   qna.question = getQuestion(progression.getMaskedProgressionAsString());
   qna.answer = progression.getHiddenElement();
   return qna;

@@ -1,4 +1,5 @@
 import readline from 'readline-sync';
+import login from './cli.js';
 
 class Qna {
   constructor() {
@@ -7,19 +8,11 @@ class Qna {
   }
 }
 
-const login = () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readline.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
-  return userName;
-};
-
 const play = (initQuestion, qanFunc) => {
   const userName = login();
   console.log(initQuestion);
   for (let i = 0; i < 3; i += 1) {
     const { question, answer } = qanFunc();
-    console.log(answer); // TODO remove once debugged
     const answerStr = String(answer);
     console.log(`${question}\n`);
     const userAnswer = readline.question('Your answer: ');
@@ -38,7 +31,6 @@ const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + mi
 
 export {
   Qna,
-  login,
   play,
   getRandom,
 };

@@ -1,4 +1,4 @@
-import { Qna, play, getRandom } from '../main.js';
+import { Qna, play, getRandom } from '../index.js';
 
 const getQuestion = (num) => `Question: ${num}`;
 

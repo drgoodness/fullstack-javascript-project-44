@@ -1,4 +1,4 @@
-import { Qna, play, getRandom } from '../main.js';
+import { Qna, play, getRandom } from '../index.js';
 
 const getQuestion = (a, b, operation) => `Question: ${a} ${operation} ${b}`;
 
@@ -8,10 +8,8 @@ const minus = (a, b) => a - b;
 
 const multiply = (a, b) => a * b;
 
-const divide = (a, b) => a / b;
-
 const getQuestionAndAnswer = () => {
-  const operation = getRandom(1, 4);
+  const operation = getRandom(1, 3);
   const a = getRandom(0, 99);
   const b = getRandom(1, 99);
   const qna = new Qna();
@@ -27,10 +25,6 @@ const getQuestionAndAnswer = () => {
     case 3:
       qna.question = getQuestion(a, b, '*');
       qna.answer = multiply(a, b);
-      break;
-    case 4:
-      qna.question = getQuestion(a, b, '/');
-      qna.answer = divide(a, b);
       break;
     default:
       getQuestionAndAnswer();

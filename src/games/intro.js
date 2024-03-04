@@ -1,4 +1,4 @@
-import { login } from '../main.js';
+import login from '../cli.js';
 
 export default function run() {
   login();
