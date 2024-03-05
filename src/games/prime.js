@@ -23,5 +23,5 @@ const getQuestionAndAnswer = () => {
 };
 
 export default function run() {
-  play('Answer \'yes\' if given number is prime. Otherwise answer \'no\'', getQuestionAndAnswer);
+  play('Answer "yes" if given number is prime. Otherwise answer "no".', getQuestionAndAnswer);
 }

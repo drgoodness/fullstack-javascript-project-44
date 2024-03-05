@@ -41,5 +41,5 @@ const getQuestionAndAnswer = () => {
 };
 
 export default function run() {
-  play('What number is missed in this progression?', getQuestionAndAnswer);
+  play('What number is missing in the progression?', getQuestionAndAnswer);
 }
