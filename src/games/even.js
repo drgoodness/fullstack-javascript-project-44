@@ -18,5 +18,5 @@ const getQuestionAndAnswer = () => {
 };
 
 export default function run() {
-  play('Answer \'yes\' if given number is even. Otherwise answer \'no\'', getQuestionAndAnswer);
+  play('Answer "yes" if the number is even, otherwise answer "no".', getQuestionAndAnswer);
 }
