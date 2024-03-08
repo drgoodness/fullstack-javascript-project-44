@@ -27,19 +27,18 @@ const getProgressionAsString = (progression) => {
   return result.trim();
 };
 
-const getQuestionAndAnswer = () => {
-  const qna = { question: '', answer: 0 };
+const generateRound = () => {
   const size = 10;
   const indexOfHiddenElement = getRandom(0, size - 1);
   const filler = getRandom(0, 9);
   const increment = getRandom(2, 9);
   const progression = buildProgression(size, filler, increment);
   const maskedProgression = getProgressionWithHiddenElement(progression, indexOfHiddenElement);
-  qna.question = getQuestion(getProgressionAsString(maskedProgression));
-  qna.answer = progression[indexOfHiddenElement];
-  return qna;
+  const question = getQuestion(getProgressionAsString(maskedProgression));
+  const answer = progression[indexOfHiddenElement];
+  return { question, answer };
 };
 
 export default function run() {
-  play('What number is missing in the progression?', getQuestionAndAnswer);
+  play('What number is missing in the progression?', generateRound);
 }

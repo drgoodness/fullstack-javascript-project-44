@@ -1,5 +1,5 @@
-import login from '../cli.js';
+import welcome from '../cli.js';
 
 export default function run() {
-  login();
+  welcome();
 }

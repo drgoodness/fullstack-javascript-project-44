@@ -9,14 +9,13 @@ const isEven = (num) => {
   return 'no';
 };
 
-const getQuestionAndAnswer = () => {
+const generateRound = () => {
   const num = getRandom(0, 99);
-  const qna = { question: '', answer: 0 };
-  qna.question = getQuestion(num);
-  qna.answer = isEven(num);
-  return qna;
+  const question = getQuestion(num);
+  const answer = isEven(num);
+  return { question, answer };
 };
 
 export default function run() {
-  play('Answer "yes" if the number is even, otherwise answer "no".', getQuestionAndAnswer);
+  play('Answer "yes" if the number is even, otherwise answer "no".', generateRound);
 }

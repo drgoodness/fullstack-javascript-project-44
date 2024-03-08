@@ -1,36 +1,28 @@
 import { play, getRandom } from '../index.js';
 
-const getQuestion = (a, b, operation) => `Question: ${a} ${operation} ${b}`;
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  return operators[getRandom(0, operators.length - 1)];
+};
 
-const addition = (a, b) => a + b;
+const getQuestion = (a, b, operator) => `Question: ${a} ${operator} ${b}`;
 
-const minus = (a, b) => a - b;
-
-const multiply = (a, b) => a * b;
+const getAnswer = (a, b, operator) => {
+  switch (operator) {
+    case '+': return a + b;
+    case '-': return a - b;
+    case '*': return a * b;
+    default: throw new Error(`Invalid operator ${operator}`);
+  }
+};
 
 const getQuestionAndAnswer = () => {
-  const operation = getRandom(1, 3);
+  const operator = getRandomOperator();
   const a = getRandom(0, 99);
   const b = getRandom(1, 99);
-  const qna = { question: '', answer: 0 };
-  switch (operation) {
-    case 1:
-      qna.question = getQuestion(a, b, '+');
-      qna.answer = addition(a, b);
-      break;
-    case 2:
-      qna.question = getQuestion(a, b, '-');
-      qna.answer = minus(a, b);
-      break;
-    case 3:
-      qna.question = getQuestion(a, b, '*');
-      qna.answer = multiply(a, b);
-      break;
-    default:
-      getQuestionAndAnswer();
-      break;
-  }
-  return qna;
+  const question = getQuestion(a, b, operator);
+  const answer = getAnswer(a, b, operator);
+  return { question, answer };
 };
 
 export default function run() {

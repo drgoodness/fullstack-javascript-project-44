@@ -2,11 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "brain-games",
-  "main": "",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-gcd": "bin/brain-gcd.js",
