@@ -1,41 +1,27 @@
-import { play, getRandom } from '../index.js';
+import play from '../index.js';
+import getRandom from '../utils.js';
 
-const getQuestion = (progressionStr) => `Question: ${progressionStr}`;
+const generateProgression = (start, step, length) => {
+  const progression = [];
 
-const buildProgression = (size, filler, increment) => Array(size)
-  .fill(filler)
-  .map((el, index) => index + increment);
-
-const getProgressionWithHiddenElement = (progression, index) => {
-  const maskedProgression = [];
-  for (let i = 0; i < progression.length; i += 1) {
-    if (i === index) {
-      maskedProgression.push('..');
-    } else {
-      maskedProgression.push(progression[i]);
-    }
+  for (let i = 0; i < length; i += 1) {
+    progression.push(start + step * i);
   }
-  return maskedProgression;
-};
 
-const getProgressionAsString = (progression) => {
-  const result = progression.reduce((acc, el) => {
-    let res = acc;
-    res += `${el} `;
-    return res;
-  }, '');
-  return result.trim();
+  return progression;
 };
 
 const generateRound = () => {
-  const size = 10;
-  const indexOfHiddenElement = getRandom(0, size - 1);
-  const filler = getRandom(0, 9);
-  const increment = getRandom(2, 9);
-  const progression = buildProgression(size, filler, increment);
-  const maskedProgression = getProgressionWithHiddenElement(progression, indexOfHiddenElement);
-  const question = getQuestion(getProgressionAsString(maskedProgression));
-  const answer = progression[indexOfHiddenElement];
+  const start = getRandom(0, 9);
+  const step = getRandom(2, 9);
+  const length = getRandom(8, 10);
+  const progression = generateProgression(start, step, length);
+
+  const randomIndex = getRandom(0, progression.length - 1);
+  const answer = String(progression[randomIndex]);
+  progression[randomIndex] = '..';
+  const question = progression.join(' ');
+
   return { question, answer };
 };
 

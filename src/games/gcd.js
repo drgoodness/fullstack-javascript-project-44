@@ -1,6 +1,5 @@
-import { play, getRandom } from '../index.js';
-
-const getQuestion = (a, b) => `Question: ${a} ${b}`;
+import play from '../index.js';
+import getRandom from '../utils.js';
 
 const getGcd = (a, b) => {
   if (!b) {
@@ -10,9 +9,9 @@ const getGcd = (a, b) => {
 };
 
 const generateRound = () => {
-  const a = getRandom(0, 99);
-  const b = getRandom(0, 99);
-  const question = getQuestion(a, b);
+  const a = getRandom();
+  const b = getRandom();
+  const question = `Question: ${a} ${b}`;
   const answer = getGcd(a, b);
   return { question, answer };
 };

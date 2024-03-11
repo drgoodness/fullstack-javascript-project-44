@@ -1,23 +1,22 @@
-import { play, getRandom } from '../index.js';
-
-const getQuestion = (num) => `Question: ${num}`;
+import play from '../index.js';
+import getRandom from '../utils.js';
 
 const isPrime = (num) => {
   if (num < 2) {
-    return 'no';
+    return false;
   }
   for (let i = 2; i * i <= num; i += 1) {
     if (num % i === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
 const generateRound = () => {
-  const num = getRandom(0, 99);
-  const question = getQuestion(num);
-  const answer = isPrime(num);
+  const num = getRandom();
+  const question = `Question: ${num}`;
+  const answer = isPrime(num) ? 'yes' : 'no';
   return { question, answer };
 };
 

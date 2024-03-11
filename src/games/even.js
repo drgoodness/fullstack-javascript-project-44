@@ -1,18 +1,17 @@
-import { play, getRandom } from '../index.js';
-
-const getQuestion = (num) => `Question: ${num}`;
+import play from '../index.js';
+import getRandom from '../utils.js';
 
 const isEven = (num) => {
   if (num % 2 === 0) {
-    return 'yes';
+    return true;
   }
-  return 'no';
+  return false;
 };
 
 const generateRound = () => {
-  const num = getRandom(0, 99);
-  const question = getQuestion(num);
-  const answer = isEven(num);
+  const num = getRandom();
+  const question = `Question: ${num}`;
+  const answer = isEven(num) ? 'yes' : 'no';
   return { question, answer };
 };
 

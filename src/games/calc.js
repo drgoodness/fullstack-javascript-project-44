@@ -1,11 +1,10 @@
-import { play, getRandom } from '../index.js';
+import play from '../index.js';
+import getRandom from '../utils.js';
 
 const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
   return operators[getRandom(0, operators.length - 1)];
 };
-
-const getQuestion = (a, b, operator) => `Question: ${a} ${operator} ${b}`;
 
 const getAnswer = (a, b, operator) => {
   switch (operator) {
@@ -18,9 +17,9 @@ const getAnswer = (a, b, operator) => {
 
 const getQuestionAndAnswer = () => {
   const operator = getRandomOperator();
-  const a = getRandom(0, 99);
-  const b = getRandom(1, 99);
-  const question = getQuestion(a, b, operator);
+  const a = getRandom();
+  const b = getRandom();
+  const question = `Question: ${a} ${operator} ${b}`;
   const answer = getAnswer(a, b, operator);
   return { question, answer };
 };
